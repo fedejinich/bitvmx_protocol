@@ -7,6 +7,7 @@ class SetupPostViewControllerV1:
         self.create_setup_controller = create_setup_controller
 
     async def __call__(self, setup_post_view_input: SetupPostV1Input) -> SetupPostV1Output:
+        print("fede - setup fund from verifier")
         setup_uuid = setup_post_view_input.setup_uuid
         network = setup_post_view_input.network
         public_key_hex, verifier_signature_public_key_hex, verifier_destination_address_hex = (

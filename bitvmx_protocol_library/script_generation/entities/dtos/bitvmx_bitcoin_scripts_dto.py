@@ -195,11 +195,13 @@ class BitVMXBitcoinScriptsDTO(BaseModel):
             return P2trAddress(
                 self.cached_trigger_trace_challenge_address[destroyed_public_key.to_hex()]
             )
+        print("prob") # this
         trigger_trace_challenge_address = (
             self.trigger_trace_challenge_scripts_list.get_taproot_address(
                 public_key=destroyed_public_key
             )
         )
+        print("this")
         self.cached_trigger_trace_challenge_address[destroyed_public_key.to_hex()] = (
             trigger_trace_challenge_address.to_string()
         )

@@ -381,6 +381,7 @@ class BitVMXExecutionScriptList(BaseModel):
         if len(self.key_list) == 0:
             tweak = tagged_hash(key_x, "TapTweak")
         else:
+            # todo fede here
             split_list_for_merkle_tree_service = SplitListForMerkleTreeService()
             split_key_list = split_list_for_merkle_tree_service(self.key_list)
             print("Call parallel hashed merkle root")

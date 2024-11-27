@@ -96,10 +96,12 @@ class TransactionGeneratorFromPublicKeysService:
         search_hash_tx_list = []
         search_choice_tx_list = []
 
+        print("fede3")
         trace_script_address = bitvmx_protocol_setup_properties_dto.bitvmx_bitcoin_scripts_dto.trace_script_list.get_taproot_address(
             destroyed_public_key
         )
 
+        print("fede4")
         for i in range(len(choice_search_scripts_addresses)):
 
             # HASH
@@ -130,9 +132,12 @@ class TransactionGeneratorFromPublicKeysService:
             search_choice_tx_list.append(current_tx)
             previous_tx_id = current_tx.get_txid()
 
+        print("fede5")
         trigger_challenge_script_address = bitvmx_protocol_setup_properties_dto.bitvmx_bitcoin_scripts_dto.trigger_trace_challenge_address(
             destroyed_public_key=destroyed_public_key
         )
+
+        print("a")
 
         trace_txin = TxInput(search_choice_tx_list[-1].get_txid(), 0)
         trace_output_amount = (
@@ -153,6 +158,7 @@ class TransactionGeneratorFromPublicKeysService:
         )
 
         #  Here we should put all the challenges
+        print("fede6")
         execution_challenge_address = bitvmx_protocol_setup_properties_dto.bitvmx_bitcoin_scripts_dto.execution_challenge_script_list.get_taproot_address(
             destroyed_public_key
         )
@@ -251,6 +257,7 @@ class TransactionGeneratorFromPublicKeysService:
                 )
             )
 
+        print("fede9")
         read_search_hash_tx_list = []
         read_search_choice_tx_list = []
         read_search_equivocation_tx_list = []
@@ -272,6 +279,7 @@ class TransactionGeneratorFromPublicKeysService:
             destroyed_public_key
         )
 
+        print("fede10")
         for i in range(len(hash_read_search_scripts_addresses)):
             # HASH
             current_txin = TxInput(previous_tx_id, 0)
@@ -309,6 +317,8 @@ class TransactionGeneratorFromPublicKeysService:
             current_equivocation_tx = Transaction([current_txin], [current_txout], has_segwit=True)
             read_search_equivocation_tx_list.append(current_equivocation_tx)
 
+
+        print("fede11")
         trigger_read_challenge_scripts_address = bitvmx_protocol_setup_properties_dto.bitvmx_bitcoin_scripts_dto.trigger_read_challenge_scripts_list.get_taproot_address(
             public_key=destroyed_public_key
         )
@@ -339,6 +349,7 @@ class TransactionGeneratorFromPublicKeysService:
             [trigger_read_challenge_txin], [trigger_read_challenge_txout], has_segwit=True
         )
 
+        print("fede12")
         return BitVMXTransactionsDTO(
             funding_tx=funding_tx,
             hash_result_tx=hash_result_tx,

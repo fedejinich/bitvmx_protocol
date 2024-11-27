@@ -202,4 +202,5 @@ class TriggerProtocolTransactionService:
             )
             return bitvmx_protocol_setup_properties_dto.bitvmx_transactions_dto.trigger_protocol_tx
 
+        print("Asd")
         raise Exception("Protocol aborted at trigger step because both hashes are equal")

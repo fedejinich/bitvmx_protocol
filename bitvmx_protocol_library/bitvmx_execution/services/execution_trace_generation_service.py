@@ -10,6 +10,7 @@ class ExecutionTraceGenerationService:
         # return "plainc.elf"
         # return "zkverifier.elf"
         return "test_input.elf"
+        # return "pkmn_guess.elf"
 
     # This can be computed on the fly to avoid storing it (it does not take that much time to generate it)
     @staticmethod
@@ -19,7 +20,12 @@ class ExecutionTraceGenerationService:
         elif ExecutionTraceGenerationService.elf_file() == "plainc.elf":
             return "./execution_files/instruction_commitment.txt"
         elif ExecutionTraceGenerationService.elf_file() == "test_input.elf":
-            return "./execution_files/instruction_commitment_input.txt"
+            return "./execution_files/test_input_rom_commitment.txt"
+            # return "./execution_files/instruction_commitment_input.txt"
+        elif ExecutionTraceGenerationService.elf_file() == "pkmn_guess.elf":
+            return "./execution_files/pkmn_rom_commitment.txt"
+
+        
 
     def __init__(self, base_path: str):
         self.base_path = base_path
