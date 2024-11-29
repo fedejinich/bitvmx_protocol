@@ -9,8 +9,8 @@ class ExecutionTraceGenerationService:
     def elf_file():
         # return "plainc.elf"
         # return "zkverifier.elf"
-        return "test_input.elf"
-        # return "pkmn_guess.elf"
+        # return "test_input.elf"
+        return "pkmn_guess.elf"
 
     # This can be computed on the fly to avoid storing it (it does not take that much time to generate it)
     @staticmethod

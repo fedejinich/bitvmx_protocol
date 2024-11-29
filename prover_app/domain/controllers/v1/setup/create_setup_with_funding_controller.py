@@ -75,12 +75,17 @@ class CreateSetupWithFundingController:
             prover_signature_private_key=signature_private_key.to_bytes().hex(),
             prover_signature_public_key=signature_private_key.get_public_key().to_hex(),
         )
+
+        custom_timeout = aiohttp.ClientTimeout(total=80000, connect=None, sock_connect=None, sock_read=None)
         async with aiohttp.ClientSession() as session:
             async with session.post(
-                url, headers=headers, json=setup_post_v1_input.dict()
+                url, headers=headers, json=setup_post_v1_input.dict(), timeout=custom_timeout
             ) as response:
                 if response.status != 200:
                     content = await response.read()
+                    print("x print")
+                    print(setup_post_v1_input.dict())
+                    print(setup_post_v1_input)
                     raise HTTPException(
                         status_code=response.status,
                         detail=content.decode(),
