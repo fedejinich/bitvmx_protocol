@@ -83,9 +83,6 @@ class CreateSetupWithFundingController:
             ) as response:
                 if response.status != 200:
                     content = await response.read()
-                    print("x print")
-                    print(setup_post_v1_input.dict())
-                    print(setup_post_v1_input)
                     raise HTTPException(
                         status_code=response.status,
                         detail=content.decode(),

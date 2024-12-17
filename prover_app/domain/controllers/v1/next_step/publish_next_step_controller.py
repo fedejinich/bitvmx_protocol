@@ -23,7 +23,7 @@ from prover_app.domain.persistences.interfaces.bitvmx_protocol_setup_properties_
 
 
 async def _trigger_next_step_verifier(setup_uuid: str, verifier_list: List[str]):
-    async with httpx.AsyncClient(timeout=3000.0) as client:
+    async with httpx.AsyncClient(timeout=9000.0) as client:
         call_verifiers_coroutines = []
         for verifier_host in verifier_list:
             url = f"{verifier_host}/next_step"
@@ -32,7 +32,7 @@ async def _trigger_next_step_verifier(setup_uuid: str, verifier_list: List[str])
             # Be careful, this body is the verifier one -> app library
             call_verifiers_coroutines.append(
                 asyncio.create_task(
-                    client.post(url, headers=headers, json={"setup_uuid": setup_uuid})
+                    client.post(url, headers=headers, json={"setup_uuid": setup_uuid}, timeout=9000.0)
                 )
             )
         for coroutine in call_verifiers_coroutines:
