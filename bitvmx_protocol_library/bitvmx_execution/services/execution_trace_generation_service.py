@@ -4,7 +4,6 @@ from bitvmx_protocol_library.bitvmx_execution.services.bitvmx_wrapper import Bit
 
 
 class ExecutionTraceGenerationService:
-
     @staticmethod
     def elf_file():
         # return "plainc.elf"
@@ -24,8 +23,6 @@ class ExecutionTraceGenerationService:
             return "./execution_files/instruction_commitment_input.txt"
         elif ExecutionTraceGenerationService.elf_file() == "pkmn_bttl.elf":
             return "./execution_files/pkmn_rom_commitment.txt"
-
-        
 
     def __init__(self, base_path: str):
         self.base_path = base_path

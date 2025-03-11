@@ -26,13 +26,12 @@ class ReadErrorPosition(Enum):
 
 
 class BitVMXWrapper:
-
     def __init__(self, base_path: str):
         self.base_path = base_path
         self.execution_checkpoint_interval = 50000000
-        self.fail_actor = "prover" # other values: "verifier"
-        self.fail_step = "10" # other values: None
-        self.fail_type = "--fail-execute" # other values: --fail-hash, --fail-pc
+        self.fail_actor = "prover"  # other values: "verifier"
+        self.fail_step = "10"  # other values: None
+        self.fail_type = "--fail-execute"  # other values: --fail-hash, --fail-pc
         self.fail_input = False
         self.fail_actor_input = "prover"
         self.contains_fail = (
